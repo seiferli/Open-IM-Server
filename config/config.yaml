@@ -1,7 +1,7 @@
 # The class cannot be named by Pascal or camel case.
 # If it is not used, the corresponding structure will not be set,
 # and it will not be read naturally.
-serverversion: 1.0.0
+serverversion: 1.0.3
 #---------------Infrastructure configuration---------------------#
 etcd:
   etcdSchema: openIM
@@ -74,11 +74,11 @@ credential:
 rpcport:
   openImUserPort: [ 10100 ]
   openImFriendPort: [ 10200 ]
-  openImOfflineMessagePort: [ 10300,10301,10302,10303 ]
+  openImOfflineMessagePort: [ 10300]
   openImOnlineRelayPort: [ 10400 ]
   openImGroupPort: [ 10500  ]
   openImAuthPort: [ 10600 ]
-  openImPushPort: [ 10700,10701,10702,10703 ]
+  openImPushPort: [ 10700 ]
 
 
 rpcregistername:
@@ -123,6 +123,7 @@ push:
     appKey: cf47465a368f24c659608e7e
     masterSecret: 02204efe3f3832947a236ee5
     pushUrl: "https://api.jpush.cn/v3/push"
+    pushIntent: "intent:#Intent;component=io.openim.app.enterprisechat/io.openim.app.enterprisechat.MainActivity;end"
 manager:
   appManagerUid: ["openIM123456","openIM654321"]
   secrets: ["openIM1","openIM2"]
@@ -137,10 +138,11 @@ multiloginpolicy:
 #token config
 tokenpolicy:
   accessSecret: "open_im_server"
-  # Token effective time seconds as a unit
-  #Seven days   7*24*60*60
-  accessExpire: 604800
+  # Token effective time day as a unit
+  accessExpire: 7
 
 messagecallback:
   callbackSwitch: false
   callbackUrl: "http://www.xxx.com/msg/judge"
+  #TimeOut use second as unit
+  callbackTimeOut: 10
